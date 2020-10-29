@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>Events Calendar</title>
+    </head>
+    <body>
+        <h1>Events Calendar</h1>
+        {% for event in events  %}
+            <div>
+                <p>{{event.date}}: <b>{{event.event_name}}</b>
+                    {% if event.recurring %}
+                    <span>- &#9989;</span>
+                    
+                    {% endif %}
+                </p>
+            </div>
+        {% endfor %}
+
+        <form action="/add-event" method=post>
+            <label for="date">
+                Date
+            </label>
+            <input type="date" name="date" id="date">
+            <label for="name">
+                Name of event
+            </label>
+            <input type="text" name="event_name" id="event_name">
+            <p>
+            <label for="guest_numbers">
+                Number of Guests
+            </label>
+            <input type="text" name="guest_numbers" id="guest_numbers">
+            <label for="room_location">
+                Location of Event
+            </label>
+            <!-- <select id="room_location">
+                <option value = "Princes Street">Princes Street</option>
+                <option value = "Martin Wishart">Martin Wishart</option>
+                <option value = "Leith">Leith</option>
+                <option value = "Calton Hill">Calton Hill</option>
+            </select> -->
+            <input type="text" name="room_location" id="room_location">
+            <p>
+            <label for="description">
+                Description
+            </label>
+            <textarea name="description" id="description" cols="50" rows="3">Enter a description...</textarea>
+            <p>
+            <label for="recurring">Tick the box if your event is recurring.</label>
+            <input type="checkbox" id="recurring" name="recurring" value="True" checked>
+            <input type="submit" value="Add event">
+            
+        </form>
+    </body>
+</html>
